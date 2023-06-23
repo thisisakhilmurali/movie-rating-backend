@@ -3,6 +3,10 @@
 Movie Rating and Listing Application Backend using Spring Boot
 
 ## Contributors
+<a href="https://github.com/thisisakhilmurali/movie-rating-backend/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=thisisakhilmurali/movie-rating-backend" />
+</a>
+
 
 ## Microservices
 1. Authentication Service: Handles the user/admin authtentication and authorization using JWT.
