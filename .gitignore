@@ -1,1 +1,4 @@
 service-registry/.idea/
+authentication-service/.idea/
+authentication-service/.mvn/
+service-registry/.mvn/
