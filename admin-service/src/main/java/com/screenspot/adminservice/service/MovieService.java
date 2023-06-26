@@ -102,7 +102,7 @@ public class MovieService {
 
             S3Client s3Client = S3Client.builder()
                     .region(Region.EU_NORTH_1)
-                    .credentialsProvider(() -> AwsBasicCredentials.create("ACCESS-KEY", "SECRET-KEY"))
+                    .credentialsProvider(() -> AwsBasicCredentials.create("A-KEY", "S-KEY"))
                     .build();
 
             DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
@@ -154,7 +154,7 @@ public class MovieService {
         try {
             S3Client s3Client = S3Client.builder()
                     .region(Region.EU_NORTH_1)
-                    .credentialsProvider(() -> AwsBasicCredentials.create("ACCESS-KEY", "SECRET-KEY"))
+                    .credentialsProvider(() -> AwsBasicCredentials.create("A-KEY", "S-KEY"))
                     .build();
 
             PutObjectRequest putObjectRequest = PutObjectRequest.builder()
@@ -167,8 +167,5 @@ public class MovieService {
             System.out.println("Exception occurred during S3 upload: " + e.getMessage());
         }
     }
-
-
-
 
 }

@@ -26,14 +26,14 @@ public class HomeController {
     }
 
     @GetMapping("/search/movie/name/{name}")
-    public ResponseEntity<Movie> getMovieByName(@PathVariable String name) throws MovieNotFoundException {
-        return ResponseEntity.ok().body(homeService.fecthMovieByName(name));
+    public ResponseEntity<List<Movie>> getMovieByName(@PathVariable String name) throws MoviesNotFoundException {
+        return ResponseEntity.ok().body(homeService.fetchMovieByName(name));
 
     }
 
     @GetMapping("/search/movie/date/{date}")
     public ResponseEntity<List<Movie>> getMovieByDate(@PathVariable String date) throws MoviesNotFoundException {
-        return ResponseEntity.ok().body(homeService.fecthMovieByDate(date));
+        return ResponseEntity.ok().body(homeService.fetchMovieByDate(date));
     }
 
     @GetMapping("/search/movie/genre/{genre}")

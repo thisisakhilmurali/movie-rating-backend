@@ -27,16 +27,16 @@ public class HomeService {
     }
 
 
-    public Movie fecthMovieByName(String name) throws MovieNotFoundException {
-        Movie movie = movieRepository.findByMovieName(name);
-        if(movie !=null) {
+    public List<Movie> fetchMovieByName(String name) throws MoviesNotFoundException {
+        List<Movie> movie = movieRepository.findAllByMovieNameContainingIgnoreCase(name);
+        if(movie != null && movie.size() != 0) {
             return movie;
         } else {
-            throw new MovieNotFoundException("Movie with name " + name + " not found");
+            throw new MoviesNotFoundException("Movie with name " + name + " not found");
         }
     }
 
-    public List<Movie> fecthMovieByDate(String date) throws MoviesNotFoundException {
+    public List<Movie> fetchMovieByDate(String date) throws MoviesNotFoundException {
         List<Movie> movies = movieRepository.findAllByMovieReleaseDate(date);
         if (movies.isEmpty()) {
             throw new MoviesNotFoundException("No movies found with the release date: " + date);
