@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HomeService {
@@ -50,5 +51,9 @@ public class HomeService {
             throw new MoviesNotFoundException("No movies found with the genre: " + genre);
         }
         return movies;
+    }
+
+    public Movie getByMovieId(Long id) throws MovieNotFoundException {
+        return movieRepository.findById(id).orElse(null);
     }
 }
