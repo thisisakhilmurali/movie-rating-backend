@@ -2,7 +2,9 @@ package com.screenspot.homeservice.controller;
 
 import com.screenspot.homeservice.exception.MovieNotFoundException;
 import com.screenspot.homeservice.exception.MoviesNotFoundException;
+import com.screenspot.homeservice.exception.NullRatingException;
 import com.screenspot.homeservice.model.Movie;
+import com.screenspot.homeservice.model.Rating;
 import com.screenspot.homeservice.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +44,11 @@ public class HomeController {
     @GetMapping("/getByMovieId/{id}")
     public ResponseEntity<Movie> getMovieById(@PathVariable Long id) throws MovieNotFoundException {
         return ResponseEntity.ok().body(homeService.getByMovieId(id));
+    }
+
+    @GetMapping("/getReviews/{movieId}")
+    public ResponseEntity<List<Rating>> getAllReviews(@PathVariable Long movieId) throws NullRatingException {
+        return ResponseEntity.ok().body(homeService.getAllReviews(movieId));
     }
 
 }

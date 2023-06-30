@@ -20,7 +20,7 @@ public class Rating {
     @GeneratedValue
     private long ratingId;
 
-    private long userId;
+    private String userName;
 
     private long movieId;
 

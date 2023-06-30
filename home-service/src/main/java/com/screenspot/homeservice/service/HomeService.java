@@ -2,7 +2,9 @@ package com.screenspot.homeservice.service;
 
 import com.screenspot.homeservice.exception.MovieNotFoundException;
 import com.screenspot.homeservice.exception.MoviesNotFoundException;
+import com.screenspot.homeservice.exception.NullRatingException;
 import com.screenspot.homeservice.model.Movie;
+import com.screenspot.homeservice.model.Rating;
 import com.screenspot.homeservice.repository.MovieRepository;
 import com.screenspot.homeservice.repository.RatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +57,14 @@ public class HomeService {
 
     public Movie getByMovieId(Long id) throws MovieNotFoundException {
         return movieRepository.findById(id).orElse(null);
+    }
+
+    public List<Rating> getAllReviews(Long movieId) throws NullRatingException {
+        List<Rating> reviews = ratingRepository.findAllByMovieId(movieId);
+        if(reviews.isEmpty()) {
+            throw new NullRatingException("No Rating Found");
+        } else {
+            return reviews;
+        }
     }
 }
